@@ -15,10 +15,10 @@ def fill_document(doc, text2type):
     
     with doc.create(Section('A section')):
         doc.append(text2type)
-        doc.append(italic(text2type))
+        #doc.append(italic(text2type))
 
-        with doc.create(Subsection('A subsection')):
-            doc.append('Also some crazy characters: $&#{}')
+        #with doc.create(Subsection('A subsection')):
+        #    doc.append('Also some crazy characters: $&#{}')
 
 class Predictor(BasePredictor):
     def setup(self) -> None:
@@ -28,7 +28,7 @@ class Predictor(BasePredictor):
         self,
         textInput: str = Input(
             description="Text to enter into the document.", 
-            default="What age was Charles Alexander Fortune?",
+            default="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
             ),
         #userFile: Path = Input(
         #    description="Upload a tex file",

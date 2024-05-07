@@ -1,7 +1,6 @@
 # Configuration for Cog
 build:
   gpu: true
-  cuda: "11.8"
   python_version: "3.10"
   python_packages:
     - "pylatex"
