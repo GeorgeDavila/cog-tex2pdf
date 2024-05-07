@@ -1,6 +1,6 @@
 # Configuration for Cog
 build:
-  gpu: true
+  gpu: false
   python_version: "3.10"
   python_packages:
     - "pylatex"
