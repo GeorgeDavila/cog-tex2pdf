@@ -4,20 +4,11 @@ build:
   cuda: "11.8"
   python_version: "3.10"
   python_packages:
-    - "pandas"
-    - "torch==2.0.0"
-    - "torchvision"
-    - "accelerate==0.22.0"
-    - "transformers"
-    - "optimum"
-    - "matplotlib"
-    - "tiktoken"
-    - "einops"
+    - "pylatex"
 
   run:
-    - apt-get update && apt-get install -y git-lfs
+    - apt-get update && apt-get install -y git-lfs texlive-pictures texlive-science texlive-latex-extra latexmk
     - git lfs install
-    - wget -O titanic.csv https://raw.githubusercontent.com/GeorgeDavila/cog-TableQA/main/titanic.csv
 
 # predict.py defines how predictions are run on your model
 predict: "predict.py:Predictor"

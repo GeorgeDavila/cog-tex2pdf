@@ -20,50 +20,11 @@ TOKEN_CACHE = "token-cache"
 #mswtqa = pipeline(task="table-question-answering", model="microsoft/tapex-large-finetuned-wtq")
 
 class Predictor(BasePredictor):
-    def setup(self) -> None:
-        """Load the model into memory to make running multiple predictions efficient"""
-        self.tokenizer0 = TapasTokenizer.from_pretrained(
-            MODEL_NAME,
-            trust_remote_code=True,
-            cache_dir=TOKEN_CACHE
-        )
-        #config = TapasConfig(num_aggregation_labels=3, average_logits_per_cell=True)
-        self.model0 = TapasForQuestionAnswering.from_pretrained(
-            MODEL_NAME,
-            trust_remote_code=True,
-            cache_dir=MODEL_CACHE,
-            #config=config
-        )
-        self.model0 = self.model0.to("cuda")
-
     def predict(
         self,
-        query: str = Input(
-            description="Your question.", 
-            default="What age was Charles Alexander Fortune?",
-            ),
-        userFileType: str = Input(
-            default="csv",
-            choices=["csv", "excel", "json"],
-            description="File type",
-            ),
         userFile: Path = Input(
-            description="Upload a file",
+            description="Upload a tex file",
             ),
-        numRows: int = Input(
-            default=35,
-            ge=1,
-            le=200,
-            description="Number of rows to scan - can't handle too many",
-            ),
-        #getFileFromURL: bool = Input(
-        #    description="Uploading from a link?", 
-        #    default=False
-        #    ),
-        #userFileURL: str = Input(
-        #    description="link to file", 
-        #    default="https://raw.githubusercontent.com/GeorgeDavila/cog-TableQA/main/titanic.csv"
-        #    ),
     ) -> str:
         """Run a single prediction on the model"""
 
