@@ -2,22 +2,21 @@
 # https://github.com/replicate/cog/blob/main/docs/python.md
 
 from cog import BasePredictor, Input, Path
-import torch
-from transformers import TapasTokenizer, TapasForQuestionAnswering, TapasConfig
-#from transformers import BartForConditionalGeneration, BartTokenizer, BartConfig
-from transformers import pipeline
-import pandas as pd
-import os
-    
-TASK_CLASS = "table-question-answering"
-MODEL_NAME = "google/tapas-large-finetuned-wtq"
-MODEL_CACHE = "model-cache"
-TOKEN_CACHE = "token-cache"
+from pylatex import Document, Section, Subsection, Command
+from pylatex.utils import italic, NoEscape
 
-#tqa = pipeline(task="table-question-answering", model="google/tapas-large-finetuned-wtq")
-#tsqa = pipeline(task="table-question-answering", model="google/tapas-large-finetuned-sqa")
-#mstqa = pipeline(task="table-question-answering", model="microsoft/tapex-large-finetuned-wikisql")
-#mswtqa = pipeline(task="table-question-answering", model="microsoft/tapex-large-finetuned-wtq")
+def fill_document(doc):
+    """Add a section, a subsection and some text to the document.
+
+    :param doc: the document
+    :type doc: :class:`pylatex.document.Document` instance
+    """
+    with doc.create(Section('A section')):
+        doc.append('Some regular text and some ')
+        doc.append(italic('italic text. '))
+
+        with doc.create(Subsection('A subsection')):
+            doc.append('Also some crazy characters: $&#{}')
 
 class Predictor(BasePredictor):
     def predict(
