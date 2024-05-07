@@ -11,9 +11,11 @@ def fill_document(doc, text2type):
     :param doc: the document
     :type doc: :class:`pylatex.document.Document` instance
     """
+    text2type = str(text2type)
+    
     with doc.create(Section('A section')):
-        doc.append(str(text2type))
-        doc.append(italic('italic text. '))
+        doc.append(text2type)
+        doc.append(italic(text2type))
 
         with doc.create(Subsection('A subsection')):
             doc.append('Also some crazy characters: $&#{}')
