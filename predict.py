@@ -35,7 +35,7 @@ class Predictor(BasePredictor):
         #userFile: Path = Input(
         #    description="Upload a tex file",
         #    ),
-    ) -> str:
+    ) -> Path:
         """Run a single prediction on the model"""
 
         documentName = "generated"
